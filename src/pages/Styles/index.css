@@ -1,0 +1,14 @@
+.Container{
+    background-image:url('../../../static/hello.jpg') ;
+    width: 100%;
+    /* background-color: blue; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    font-size: 64px;
+    font-weight: 700;
+    background-position: center;
+}
