@@ -1,16 +1,13 @@
-import { useContractRead, useNetwork } from '@thirdweb-dev/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SliderData from '../../../assets/data/boxSlider';
 import Countdown from '../../../components/countdown/Countdown.jsx';
 import Progressbar from '../../../components/progressbar/Progressbar.jsx';
 import BannerWrapper from './Banner.style.jsx';
 
-import { formatEther } from 'viem';
-import Data from '../../../assets/data/networkInfo';
-import * as configModule1 from '../../../contracts/config';
-import * as configModule2 from '../../../contracts/configBnb';
-import Notification from '../../../components/notification/Notification.jsx';
 import Slider from 'react-slick';
+import Data from '../../../assets/data/networkInfo';
+import Notification from '../../../components/notification/Notification.jsx';
+import * as configModule1 from '../../../contracts/config';
 // import { PayWith } from '@thirdweb-dev/react/solana';
 
 const Banner = () => {
@@ -31,10 +28,6 @@ const Banner = () => {
     pauseOnHover: true,
   };
 
-  const [configModule, setConfigModule] = useState(configModule1);
-  const bnbChainId = Data[1]?.chainId;
-  const ethChainId = Data[0]?.chainId;
-  const [userChainId, setUserChainId] = useState(null);
 
   const [currentStage, setCurrentStage] = useState(1);
   const [currentBonus, setCurrentBonus] = useState(20);
@@ -45,89 +38,6 @@ const Banner = () => {
   const [tokenDecimals, setTokenDecimals] = useState(6);
   const [tokenSubDecimals, setTokenSubDecimals] = useState(0);
 
-  // const { address: addressData, isConnected } = useAccount();
-  const { chain } = useNetwork();
-  // const { data: tokenDecimalsData } = useContractRead({
-  //  ...configModule.tokenDecimalsCall,
-  // });
-  // const { data: presaleTokenAmountData } = useContractRead({
-  //  ...configModule.presaleTokenAmountCall,
-  // });
-  // const { data: totalSoldData } = useContractRead({
-  //  ...configModule.totalSoldCall,
-  // });
-  // const { data: currentStageIdData } = useContractRead({
-  //  ...configModule.currentStageIdCall,
-  // });
-  // const { data: currentStageInfoData } = useContractRead({
-  //  ...configModule.currentStageInfoCall,
-  //   args: [currentStageIdData],
-  // });
-
-  // useEffect(() => {
-  //   if (isConnected) {
-  //     if (chain) {
-  //       const tmp = chain?.id;
-  //       if (tmp == ethChainId) {
-  //         setConfigModule((prev) => configModule1);
-  //       }
-  //       if (tmp == bnbChainId) {
-  //         setConfigModule((prev) => configModule2);
-  //       }
-  //     }
-
-  //     if (tokenDecimalsData) {
-  //       let _subDecimal = 18 - tokenDecimalsData;
-  //       setTokenDecimals(tokenDecimalsData);
-  //       setTokenSubDecimals(_subDecimal);
-  //     }
-
-  //     if (presaleTokenAmountData) {
-  //       let tmp = formatEther(presaleTokenAmountData);
-  //       setPresaleToken(tmp / 10 ** tokenSubDecimals);
-  //     }
-
-  //     if (totalSoldData) {
-  //       let tmp = formatEther(totalSoldData);
-  //       setTokenSold(tmp / 10 ** tokenSubDecimals);
-  //     }
-
-  //     if (currentStageIdData) {
-  //       setCurrentStage(currentStageIdData.toString());
-  //     }
-
-  //     if (currentStageInfoData) {
-  //       setCurrentBonus(currentStageInfoData[1].toString());
-  //       setStageEnd(currentStageInfoData[4].toString());
-  //     }
-
-  //     let _tokenPercent = parseInt((tokenSold * 100) / presaleToken);
-  //     setTokenPercent(_tokenPercent);
-  //     if (_tokenPercent > 100) {
-  //       setTokenPercent(100);
-  //     }
-  //   }
-
-  //   if (isActiveNotification) {
-  //     const timeoutId = setTimeout(() => {
-  //       setIsActiveNotification(false);
-  //     }, 2000);
-
-  //     return () => clearTimeout(timeoutId);
-  //   }
-  // }, [
-  //   isConnected,
-  //   chain,
-  //   configModule,
-  //   tokenDecimalsData,
-  //   presaleTokenAmountData,
-  //   totalSoldData,
-  //   currentStageIdData,
-  //   currentStageInfoData,
-  //   tokenSold,
-  //   presaleToken,
-  //   isActiveNotification,
-  // ]);
 
   return (
     <>
@@ -171,39 +81,6 @@ const Banner = () => {
                           <Progressbar done={tokenPercent} variant="green2" />
                         </div>
 
-                        {/* {chain?.id === 1 ? (
-                          <PayWith
-                            walletAddress={addressData}
-                            amount={0.01}
-                            tokenAddress={configModule.tokenAddress}
-                            onSuccess={(data) => {
-                              console.log("Payment successful", data);
-                              setIsActiveNotification(true);
-                              setNotificationMsg("Payment successful");
-                            }}
-                            onError={(error) => {
-                              console.error("Payment failed", error);
-                              setIsActiveNotification(true);
-                              setNotificationMsg("Payment failed");
-                            }}
-                          />
-                        ) : (
-                          <PayWith
-                            walletAddress={addressData}
-                            amount={0.01}
-                            tokenAddress={configModule.tokenAddress}
-                            onSuccess={(data) => {
-                              console.log("Payment successful", data);
-                              setIsActiveNotification(true);
-                              setNotificationMsg("Payment successful");
-                            }}
-                            onError={(error) => {
-                              console.error("Payment failed", error);
-                              setIsActiveNotification(true);
-                              setNotificationMsg("Payment failed");
-                            }}
-                          />
-                        )} */}
                       </div>
                     </div>
                   </div>

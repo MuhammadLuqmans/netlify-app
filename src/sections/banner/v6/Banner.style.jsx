@@ -42,7 +42,7 @@ const BannerWrapper = styled.section`
     max-width: 100%;
     position: relative;
 
-    &::before {
+    /* &::before {
       position: absolute;
       z-index: -1;
       content: "";
@@ -68,7 +68,7 @@ const BannerWrapper = styled.section`
       border-radius: 20px;
       background: linear-gradient(180deg, rgba(82, 79, 31, 0) 0%, #1d200f 100%);
       backdrop-filter: blur(15px);
-    }
+    } */
   }
 
   .presale-card {
